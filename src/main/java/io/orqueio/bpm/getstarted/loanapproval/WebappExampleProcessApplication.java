@@ -14,11 +14,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.camunda.bpm.getstarted.loanapproval;
+package io.orqueio.bpm.getstarted.loanapproval;
 
-import org.camunda.bpm.engine.RuntimeService;
-import org.camunda.bpm.spring.boot.starter.annotation.EnableProcessApplication;
-import org.camunda.bpm.spring.boot.starter.event.PostDeployEvent;
+import io.orqueio.bpm.engine.RuntimeService;
+import io.orqueio.bpm.spring.boot.starter.annotation.EnableProcessApplication;
+import io.orqueio.bpm.spring.boot.starter.event.PostDeployEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

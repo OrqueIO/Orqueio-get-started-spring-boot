@@ -1,13 +1,13 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>org.camunda.bpm.getstarted</groupId>
+  <groupId>io.orqueio.bpm.getstarted</groupId>
   <artifactId>loan-approval-spring-boot</artifactId>
   <version>0.0.1-SNAPSHOT</version>
 
   <properties>
-    <camunda.spring-boot.version>7.24.0</camunda.spring-boot.version>
     <spring-boot.version>3.5.5</spring-boot.version>
     <maven.compiler.release>17</maven.compiler.release>
+    <orqueio.version>1.0.2</orqueio.version>
   </properties>
 
   <dependencyManagement>
@@ -19,14 +19,27 @@
         <type>pom</type>
         <scope>import</scope>
       </dependency>
+
+    <dependency>
+        <groupId>io.orqueio.bpm</groupId>
+        <artifactId>orqueio-bom</artifactId>
+        <version>${orqueio.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+
     </dependencies>
   </dependencyManagement>
 
   <dependencies>
     <dependency>
-      <groupId>org.camunda.bpm.springboot</groupId>
-      <artifactId>camunda-bpm-spring-boot-starter-webapp</artifactId>
-      <version>${camunda.spring-boot.version}</version>
+      <groupId>io.orqueio.bpm.springboot</groupId>
+      <artifactId>orqueio-bpm-spring-boot-starter-webapp</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>io.orqueio.bpm.springboot</groupId>
+      <artifactId>orqueio-bpm-spring-boot-starter-rest</artifactId>
     </dependency>
     <dependency>
       <groupId>com.h2database</groupId>
