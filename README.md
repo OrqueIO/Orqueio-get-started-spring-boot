@@ -12,7 +12,7 @@ to your `pom.xml`:
 ```xml
 ...
   <properties>
-    <orqueio.version>1.0.2</orqueio.version>
+    <orqueio.version>1.0.5</orqueio.version>
   </properties>
 
   <dependencyManagement>
@@ -64,10 +64,8 @@ public class WebappExampleProcessApplication {
 3. You can also put additional BPMN, CMMN and DMN files in your classpath, they will be automatically deployed and 
 registered within the process application. Forms HTML needs to be added in the `/resources/static/forms` directory.
 
-4. If you want your Orqueio license automatically used on Engine startup, just put the file with the name 
-`orqueio-license.txt` on your classpath. 
 
-5. Adjust the `src/main/resources/application.yaml` file according to your preferences. The default setup will use an
+4. Adjust the `src/main/resources/application.yaml` file according to your preferences. The default setup will use an
  embedded H2 instance.
 
 ## Run the application and use Orqueio Platform
