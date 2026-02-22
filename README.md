@@ -6,8 +6,8 @@ A complete example demonstrating how to integrate and run the Orqueio Platform w
 
 Orqueio Platform is a powerful business process management (BPM) engine that enables you to design, deploy, and execute BPMN workflows. This starter project includes:
 
-- Embedded Orqueio Engine (v2.0.0)
-- Spring Boot 4.0.0 integration
+- Embedded Orqueio Engine (v2.0.1)
+- Spring Boot 4.0.1 integration
 - Enterprise webapps for process management
 - REST API for programmatic access
 - Example BPMN process (Loan Approval)
@@ -16,7 +16,7 @@ Orqueio Platform is a powerful business process management (BPM) engine that ena
 ## Prerequisites
 
 - **Java**: 17 or 21
-- **Spring Boot**: 4.0.0
+- **Spring Boot**: 4.0.1
 - **Maven**: 3.6 or higher
 - **IDE**: (Optional) IntelliJ IDEA, Eclipse, or VS Code
 
@@ -60,8 +60,8 @@ Add the following to your `pom.xml`:
 
 ```xml
 <properties>
-  <spring-boot.version>4.0.0</spring-boot.version>
-  <orqueio.version>2.0.0</orqueio.version>
+  <spring-boot.version>4.0.1</spring-boot.version>
+  <orqueio.version>2.0.1</orqueio.version>
 </properties>
 
 <dependencyManagement>
@@ -88,6 +88,22 @@ Add the following to your `pom.xml`:
   <dependency>
     <groupId>io.orqueio.bpm.springboot</groupId>
     <artifactId>orqueio-bpm-spring-boot-starter-webapp</artifactId>
+  </dependency>
+
+  <dependency>
+    <groupId>io.orqueio.bpm.springboot</groupId>
+    <artifactId>orqueio-bpm-spring-boot-starter-rest</artifactId>
+  </dependency>
+
+  <dependency>
+    <groupId>com.h2database</groupId>
+    <artifactId>h2</artifactId>
+  </dependency>
+
+  <dependency>
+    <groupId>com.sun.xml.bind</groupId>
+    <artifactId>jaxb-impl</artifactId>
+    <version>4.0.3</version>
   </dependency>
 </dependencies>
 ```
@@ -123,7 +139,19 @@ public class WebappExampleProcessApplication {
 
 Configure database and security settings in `src/main/resources/application.yaml`:
 
+```yaml
+orqueio.bpm:
+  admin-user:
+    id: demo
+    password: demo
+    firstName: Demo
+  filter:
+    create: All tasks
+```
+
+**Configuration Notes:**
 - Default configuration uses an embedded H2 database
+- Default admin credentials: demo/demo
 - Customize database, admin credentials, and other settings as needed
 
 ## Project Structure
@@ -132,16 +160,12 @@ Configure database and security settings in `src/main/resources/application.yaml
 src/
 ├── main/
 │   ├── java/
-│   │   └── io/orqueio/bpm/getstarted/
+│   │   └── io/orqueio/bpm/getstarted/loanapproval/
 │   │       └── WebappExampleProcessApplication.java
 │   └── resources/
 │       ├── META-INF/
 │       │   └── processes.xml
-│       ├── static/
-│       │   └── forms/              # HTML forms for user tasks
-│       ├── bpmn/                   # BPMN process definitions
-│       ├── cmmn/                   # CMMN case definitions (optional)
-│       ├── dmn/                    # DMN decision tables (optional)
+│       ├── loanApproval.bpmn       # BPMN process definition
 │       └── application.yaml
 ```
 
@@ -149,20 +173,22 @@ src/
 
 ### BPMN Processes
 
-Place your `.bpmn` files anywhere on the classpath. They will be automatically:
+Place your `.bpmn` files anywhere on the classpath (e.g., `src/main/resources/`). They will be automatically:
 - Discovered during application startup
 - Deployed to the Orqueio Engine
 - Registered with the process application
 
+**Example:** The included `loanApproval.bpmn` in `src/main/resources/` demonstrates a simple loan approval workflow.
+
 ### User Task Forms
 
-Add HTML forms in `src/main/resources/static/forms/`:
+Add HTML forms in `src/main/resources/static/forms/` (create the directory if needed):
 - Forms are automatically linked to user tasks in your BPMN processes
 - Use embedded forms or external task forms
 
 ### Decision Tables (DMN)
 
-Add `.dmn` files to the classpath for business rule automation alongside your BPMN processes.
+Add `.dmn` files to the classpath (e.g., `src/main/resources/`) for business rule automation alongside your BPMN processes.
 
 ## Features
 
