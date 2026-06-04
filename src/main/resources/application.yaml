@@ -5,3 +5,6 @@ orqueio.bpm:
     firstName: Demo
   filter:
     create: All tasks
+
+server:
+  port: 18082

@@ -5,8 +5,8 @@
   <version>0.0.1-SNAPSHOT</version>
 
   <properties>
-    <spring-boot.version>4.0.2</spring-boot.version>
-    <maven.compiler.release>21</maven.compiler.release>
+    <spring-boot.version>4.0.6</spring-boot.version>
+    <maven.compiler.release>25</maven.compiler.release>
     <orqueio.version>2.0.2</orqueio.version>
   </properties>
 
@@ -20,14 +20,13 @@
         <scope>import</scope>
       </dependency>
 
-    <dependency>
+      <dependency>
         <groupId>io.orqueio.bpm</groupId>
         <artifactId>orqueio-bom</artifactId>
         <version>${orqueio.version}</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
-
     </dependencies>
   </dependencyManagement>
 
@@ -40,6 +39,10 @@
     <dependency>
       <groupId>io.orqueio.bpm.springboot</groupId>
       <artifactId>orqueio-bpm-spring-boot-starter-rest</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-actuator</artifactId>
     </dependency>
     <dependency>
       <groupId>com.h2database</groupId>
